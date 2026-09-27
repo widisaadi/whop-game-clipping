@@ -3,257 +3,619 @@
 ![Whop Game Clipping](assets/banner.png)
 
 # Whop Game Clipping
-### *All-in-One Automation Bot & Video Pipeline for Whop Content Rewards*
+
+### Why clip videos manually when agents can do it?
+
+**↓ $0 software cost. No editors. No subscriptions. Let the machines do the boring work.**
+
+An automation pipeline for turning raw game footage into short-form content — from campaign rules and scripting to AI voiceover, dynamic subtitles, rendering, and QA.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python: 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 [![FFmpeg: 6.0+](https://img.shields.io/badge/FFmpeg-6.0%2B-green.svg)](https://ffmpeg.org/)
 [![Platform: TikTok | Shorts | Reels](https://img.shields.io/badge/Platform-TikTok%20%7C%20Shorts%20%7C%20Reels-ff0050.svg)](#)
-[![Monetization: Whop Content Rewards](https://img.shields.io/badge/Whop-Content%20Rewards-ff5c35.svg)](#)
-
-<p align="center">
-  <b>Automation Bot & Pipeline Cerdas untuk Whop Game Clipping: Mulai dari membaca aturan campaign, mengunduh aset, menghasilkan AI voiceover berkecepatan tinggi, meracik subtitle kinetik ASS kata-per-kata, hingga perakitan video dan audio mastering standar penyiaran secara otomatis.</b>
-</p>
 
 </div>
 
 ---
 
-## 💡 Tentang Proyek
+## The idea
 
-**Whop Game Clipping** adalah sistem robotika otomasi (*automation bot*) dan *rendering pipeline* cerdas yang **didesain khusus untuk para kreator klip game di program Whop Content Rewards & Game Publisher Campaigns**.
+Manual clipping is basically:
 
-Program *clipping reward* di ekosistem Whop menuntut kreator untuk memproduksi puluhan video pendek setiap minggunya dengan standar kualitas tinggi: tidak boleh membosankan (*high retention*), hook awal harus langsung menyengat penonton, teks subtitle harus dinamis, dan ketentuan sponsor/campaign harus dipatuhi 100%.
+> download footage → open editor → cut clips → write script → record voice → make subtitles → fix timing → render → check everything → repeat
 
-Mengedit secara manual membutuhkan waktu 1–2 jam per video. **Whop Game Clipping memangkas seluruh alur tersebut menjadi hitungan detik**:
-Bot membaca aturan kampanye, mengunduh footage aset klip, menulis naskah retensi tinggi, memproduksi suara AI alami, membuat subtitle pop kinetik, merender komposisi video ambient backdrop 9:16, dan melakukan mastering audio profesional secara otomatis.
+Why?
+
+This project turns that workflow into a pipeline.
+
+**Campaign in → finished clip out.**
+
+You give the system the campaign, footage, and creative direction. The agents and scripts handle the repetitive production work.
+
+```text
+Campaign
+   ↓
+Rules
+   ↓
+Script
+   ↓
+Voiceover
+   ↓
+Subtitles
+   ↓
+Video Assembly
+   ↓
+Render
+   ↓
+QA
+   ↓
+Ready to Post
+```
+
+The goal isn't to replace creativity.
+
+The goal is to make the boring parts disappear.
 
 ---
 
-## ⚡ Quick Start (Setup Cepat dalam 3 Menit)
+## What it does
 
-Mulai gunakan pipeline ini hanya dengan 4 langkah mudah:
+### 🤖 Campaign → Production
 
-### 1. Kloning Repositori
+The pipeline can take a campaign brief and turn its requirements into an actionable production workflow.
+
+It can extract things like:
+
+- Required game / campaign name
+- Mandatory mentions
+- Video duration
+- Aspect ratio
+- CTA requirements
+- Prohibited content
+- Disclosure requirements
+- Submission requirements
+
+No more keeping a 4-page campaign brief open while editing.
+
+---
+
+### ✍️ Script generation
+
+Generate short-form scripts designed around retention.
+
+The included workflow uses a simple 5-beat structure:
+
+```text
+01  Hook
+02  Constraint
+03  Unexpected mechanic
+04  Progression
+05  Payoff + CTA
+```
+
+The idea is simple:
+
+**Don't make the viewer wait for the interesting part.**
+
+---
+
+### 🎙️ AI Voiceover
+
+Generate voiceovers using Google Gemini TTS.
+
+The pipeline supports:
+
+- Gemini voices
+- Multiple API keys
+- Batch generation
+- Silence trimming
+- Voice pacing
+- Final audio processing
+
+The result is a tightly timed voice track ready for short-form editing.
+
+---
+
+### 💬 Dynamic subtitles
+
+The subtitle engine generates `.ass` subtitles with:
+
+- Word / phrase timing
+- Kinetic pop animations
+- Bold typography
+- High-contrast outlines
+- Dynamic emphasis
+- Gameplay-friendly positioning
+
+Instead of:
+
+```text
+hello guys welcome back
+```
+
+you get subtitles designed to actually move with the narration.
+
+---
+
+### ✂️ Automated video editing
+
+The rendering pipeline is built around FFmpeg.
+
+It handles:
+
+- Clip trimming
+- Timeline assembly
+- Video sequencing
+- Audio mixing
+- Subtitle rendering
+- Vertical composition
+- Constant frame rate output
+- Color-space handling
+- Endcards
+- Final encoding
+
+No Premiere timeline required.
+
+No dragging clips around for an hour.
+
+---
+
+### 📱 Vertical short-form output
+
+The pipeline is designed around:
+
+```text
+1080 × 1920
+9:16
+```
+
+for platforms such as:
+
+- TikTok
+- YouTube Shorts
+- Instagram Reels
+
+Gameplay can be placed inside a vertical composition while preserving important UI elements.
+
+---
+
+### 🔊 Audio mastering
+
+The pipeline also includes audio processing for:
+
+- Silence removal
+- Loudness normalization
+- Voice/music balancing
+- Final audio cleanup
+
+The included workflow targets broadcast-style loudness normalization using EBU R128.
+
+---
+
+### 🔍 Automated QA
+
+Before publishing, the pipeline can validate the final video.
+
+For example:
+
+```bash
+python .agents/skills/ffmpeg-skill/scripts/check.py \
+  campaigns/how_to_fisch/output/01_final_video.mp4 \
+  --platform tiktok
+```
+
+Because rendering a video for several minutes only to discover something broke at the end is not fun.
+
+---
+
+# Quick Start
+
+## 1. Clone
+
 ```bash
 git clone https://github.com/widisaadi/whop-game-clipping.git
 cd whop-game-clipping
 ```
 
-### 2. Pasang Dependensi Python
+## 2. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
-*(Opsional: Disarankan menggunakan virtual environment: `python -m venv venv` lalu aktifkan).*
 
-### 3. Masukkan API Key Gemini
-Salin template konfigurasi dan masukkan Google Gemini API Key Anda ([Dapatkan gratis di Google AI Studio](https://aistudio.google.com/app/apikey)):
+A virtual environment is recommended:
+
 ```bash
-# Windows (PowerShell):
-Copy-Item .env.example .env
+python -m venv venv
+```
 
-# macOS / Linux:
+Activate it:
+
+### Windows
+
+```powershell
+venv\Scripts\activate
+```
+
+### macOS / Linux
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+## 3. Configure Gemini
+
+Create your environment file:
+
+### Windows
+
+```powershell
+Copy-Item .env.example .env
+```
+
+### macOS / Linux
+
+```bash
 cp .env.example .env
 ```
-Isi file `.env`:
+
+Then add your API key:
+
 ```env
-GEMINI_API_KEY=AIzaSyYourActualAPIKeyHere...
+GEMINI_API_KEY=your_api_key_here
 ```
 
-### 4. Uji Coba Kesiapan Sistem
-Jalankan verifikasi timeline untuk memastikan instalasi FFmpeg dan Python berjalan sempurna:
+You can get a Gemini API key from Google AI Studio.
+
+> **Cost note:** The repository itself is open-source and free to run. API usage depends on the provider and your account's available free tier / quota. The goal of this project is to keep the software pipeline at **$0 software cost** when used with available free-tier resources.
+
+---
+
+## 4. Install FFmpeg
+
+Make sure FFmpeg is available in your system PATH.
+
+Check:
+
 ```bash
-python scripts/render_retention.py campaigns/how_to_fisch/edits/09_fish_fight_back.json --dry-run
+ffmpeg -version
 ```
-✅ **Selesai!** Sistem Anda telah 100% siap memproduksi video clipping otomatis.
+
+The pipeline is designed for FFmpeg 6.0+.
 
 ---
 
-## 🚀 8 Pilar Otomasi Utama
+## 5. Run a dry test
 
-Framework ini dibangun di atas 8 modul otomasi yang saling terhubung:
-
-### 1. 🤖 Automation Bot Auto-Clip
-Bot orkestrator yang mengeksekusi pipeline produksi dari ujung ke ujung (*end-to-end*). Anda cukup menentukan nama kampanye dan naskah/angle, dan sistem akan mengoordinasikan pemotongan klip, perakitan audio, penyelarasan subtitle, hingga render video final secara otomatis tanpa perlu membuka software video editor manual.
-
-### 2. 📥 Download Asset & Inventory Manager
-Modul pengunduh otomatis yang mampu mengambil aset footage mentah, materi branding, ikon game, musik latar, dan sound effect dari sumber cloud (seperti Google Drive atau MediaSilo) ke dalam folder lokal kampanye (`campaigns/<slug>/assets/`). Sistem secara otomatis mencatat manifest integritas file (`asset_manifest.json`) dan membuat katalog adegan visual (`footage_catalog.json`).
-
-### 3. 📋 Baca & Ekstrak Aturan Campaign (Campaign Rules Parser)
-SOP otomasi cerdas (`prompts/campaign_intake.md`) untuk membaca panduan Google Docs atau brief kampanye Whop. Sistem secara otomatis memisahkan:
-- **Ketentuan Wajib (Mandatory):** Nama resmi game, penyebutan audio, batas durasi, dan format rasio.
-- **Larangan Keras (Prohibited):** Klaim berlebihan (*fake hype*), footage di luar folder resmi, atau musik berhak cipta.
-- **Kepatuhan Regulasi:** Format tagar (#Ad, #Sponsored) dan aturan FTC disclosure.
-- **Call-to-Action (CTA):** Teks penutup resmi seperti *"Play on Roblox"* atau *"Link in Bio"*.
-
-### 4. ✂️ Smart Video Editing Engine
-Mesin penyunting berbasis FFmpeg tingkat lanjut yang memotong klip pada milidetik presisi, menyusun sekuens timeline dinamis, dan menerapkan *Constant Frame Rate* (CFR 30.00 fps) dengan color space BT.709 untuk menjamin tidak adanya frame freeze atau patah-patah pada transisi segmen.
-
-### 5. 🎨 Visual Composition & Living Endcard
-- **Framing Ambient Blurred Backdrop (1:1 Sharp Center):** Footage gameplay 16:9 ditempatkan tajam 1:1 di tengah layar vertikal 9:16 (1080×1920) dengan latar belakang cermin kabur (*mirror blur*). Ini menjamin elemen vital game (seperti UI tombol, health bar boss, kotak code, dan inventori) tidak terpotong tepi layar ponsel.
-- **Living Endcard (Focal Center):** Penutup video beranimasi dengan layout presisi yang menampilkan kartu branding resmi game, judul game, dan teks ajakan bermain (CTA) yang bersih tanpa box hitam kaku.
-
-### 6. 💬 Subtitle Impact Kinetic Pop (ASS Dynamic Engine)
-Generator subtitle otomatis berekstensi `.ass` (*Advanced SubStation Alpha*) dengan standar retensi viral:
-- Menggunakan tipografi tebal `Impact 96–102`.
-- Outline pekat 8–9px hitam solid dan shadow 5–6px untuk kontras maksimal di atas latar gameplay apa pun.
-- Animasi kinetik *pop* kata-per-kata dengan penekanan warna dinamis (Emas, Hijau, Merah, dan Putih) yang melompat mengikuti ketukan suara.
-
-### 7. 🎙️ High-Velocity AI Voiceover ("Gaada Napas")
-Integrasi generator vokal AI berbasis Google Gemini TTS (`Puck`, `Aoede`, `Achird`) yang diatur untuk menghasilkan gaya bercerita gaming yang antusias dan cepat. Dilengkapi algoritma pemangkasan jeda hening (*silence removal* untuk jeda >100ms) dan akselerasi vokal alami (`atempo=1.30..1.35`), menghasilkan delivery vokal padat (~3.8–4.1 kata per detik) yang tidak memberi celah bagi penonton untuk melakukan *swipe*.
-
-### 8. 🎯 Didesain Khusus untuk Whop Clipping
-Seluruh arsitektur, durasi (20–35 detik), rasio vertikal penuh, hingga arsitektur naskah disetel khusus untuk memenuhi indikator performa utama program **Whop Content Rewards**:
-- Memaksimalkan retensi 2 detik pertama (lolos *swipe-through*).
-- Menjaga Average Percentage Viewed (APV) tetap tinggi.
-- Memenuhi seluruh kriteria verifikasi submission agar klaim reward disetujui tanpa penolakan.
-
----
-
-## 🎬 Alur Pemakaian Sehari-hari (Production Workflow)
-
-Setelah setup selesai, gunakan alur kerja 4 tahap berikut untuk memproduksi video baru:
-
-```mermaid
-flowchart LR
-    A["1. Intake Campaign"] --> B["2. Naskah 5-Beat"]
-    B --> C["3. Pipeline Eksekusi"]
-    C --> D["4. QA & Publikasi"]
-```
-
-### 1. Intake Campaign Baru
-- Buat direktori kampanye di `campaigns/<nama_game_slug>/assets/clips/`.
-- Letakkan video klip mentah gameplay resmi di folder tersebut.
-
-### 2. Naskah & Semantik Visual 1:1
-- Tulis naskah ringkas (80–120 kata) mengikuti formula 5-beat.
-- Cocokkan kata kunci naskah dengan visual footage (misal kata *"treadmill"* harus menampilkan karakter di treadmill).
-
-### 3. Eksekusi Otomatisasi
 ```bash
-# A. Generate Voiceover AI alami
-python scripts/gemini_tts.py
-
-# B. Pangkas jeda hening > 100ms
-python .agents/skills/ffmpeg-skill/scripts/silence.py temp/raw_tts.wav --stop-duration 0.10 --stop-threshold -35dB --output temp/voiceover_tight.wav
-
-# C. Generate subtitle animasi ASS
-python scripts/align_and_group_phrases.py
-
-# D. Render video master final
-python scripts/render_retention.py campaigns/how_to_fisch/edits/09_fish_fight_back.json
+python scripts/render_retention.py \
+  campaigns/how_to_fisch/edits/09_fish_fight_back.json \
+  --dry-run
 ```
 
-### 4. Audit Kepatuhan (QA)
-```bash
-python .agents/skills/ffmpeg-skill/scripts/check.py campaigns/how_to_fisch/output/01_final_video.mp4 --platform tiktok
+If the verification passes, you're ready to start cooking.
+
+---
+
+# Production Workflow
+
+A typical production run looks like this:
+
+```text
+┌──────────────────────┐
+│   Campaign Brief     │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│   Rules Extraction   │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│   Retention Script   │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│    Gemini TTS        │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│ Dynamic Subtitles    │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│   FFmpeg Render      │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│       QA             │
+└──────────┬───────────┘
+           ↓
+      Ready to Post
 ```
 
 ---
 
-## 💎 Formula Retensi 5-Beat (The 5-Beat Machine)
+# The 5-Beat Machine
 
-Setiap naskah video diatur dalam 5 beat psikologis retensi:
+The included content workflow is built around five simple beats.
 
-```
-[0.0s - 2.0s]  Beat 1: Velocity Hook       -> Aksi kinetik cepat / premis kemustahilan tanpa basa-basi salam.
-[2.0s - 6.0s]  Beat 2: Core Constraint     -> Aturan ekstrem atau batasan gameplay ("jumping is banned").
-[6.0s - 9.0s]  Beat 3: The Absurd Tool     -> Mekanik tak terduga ("spitting tongue to make bridges").
-[9.0s - 15.0s] Beat 4: Progression Grind   -> Multiplier scaling, leveling up, melintasi rintangan masif.
-[15.0s - End]  Beat 5: Peak Tease & CTA    -> Pamer kekuatan dewa + Living Endcard & ajakan bermain.
-```
+### 01 — Velocity Hook
 
----
+**0–2 seconds**
 
-## 🛠 Katalog Skrip Utama
+Start immediately.
 
-| Skrip | Fungsi & Deskripsi |
-| :--- | :--- |
-| `scripts/gemini_tts.py` | Engine TTS Google Gemini dengan rotasi multi-key untuk mencegah limit kuota. |
-| `scripts/batch_generate_10_voices.py` | Memproses 10 naskah video sekaligus dalam satu antrean batch render. |
-| `scripts/render_retention.py` | Engine render utama berbasis FFmpeg dengan proteksi validasi timeline. |
-| `scripts/align_and_group_phrases.py` | Menghitung durasi suku kata dan mengelompokkan kata menjadi frasa subtitle dinamis. |
-| `.agents/skills/ffmpeg-skill/scripts/loudness.py` | Normalisasi audio penyiaran 2-Pass EBU R128 (`-14.0 LUFS`). |
-| `.agents/skills/ffmpeg-skill/scripts/silence.py` | Pemangkas dead air otomatis tanpa distorsi artefak audio. |
-| `.agents/skills/ffmpeg-skill/scripts/check.py` | Penguji integritas video untuk sertifikasi kelayakan upload platform. |
+No:
+
+> "Hey guys, welcome back..."
+
+Instead:
+
+> Give the viewer a reason not to swipe.
 
 ---
 
-## 📁 Struktur Direktori Repositori
+### 02 — Core Constraint
+
+Introduce the unusual rule, challenge, or problem.
+
+Example:
+
+> "You can't jump."
+
+---
+
+### 03 — The Absurd Tool
+
+Introduce the mechanic that makes the video interesting.
+
+Example:
+
+> A ridiculous tool or game mechanic becomes the only way forward.
+
+---
+
+### 04 — Progression
+
+Escalate.
+
+Make the problem harder.
+
+Make the gameplay more ridiculous.
+
+Make the viewer wonder what happens next.
+
+---
+
+### 05 — Payoff + CTA
+
+Finish the story and transition into the required campaign CTA.
+
+---
+
+# Main Components
+
+| Component | What it does |
+|---|---|
+| `scripts/gemini_tts.py` | Gemini TTS voice generation |
+| `scripts/batch_generate_10_voices.py` | Batch voice generation |
+| `scripts/render_retention.py` | Main video rendering pipeline |
+| `scripts/align_and_group_phrases.py` | Subtitle timing and phrase grouping |
+| `.agents/skills/ffmpeg-skill/scripts/silence.py` | Removes unwanted silence |
+| `.agents/skills/ffmpeg-skill/scripts/loudness.py` | Audio loudness normalization |
+| `.agents/skills/ffmpeg-skill/scripts/check.py` | Final video validation |
+
+---
+
+# Repository Structure
 
 ```text
 whop-game-clipping/
-├── .agents/                            # Skill agen AI & toolchain editing FFmpeg
-├── assets/                             # Aset global, banner resmi, font, sfx, & sample clips
-├── campaigns/                          # Direktori kerja modular per kampanye game
-├── prompts/                            # Panduan sistem (SOP intake & retention script)
-├── scripts/                            # Skrip generator audio, voiceover, dan render pipeline
-├── shared/                             # Aset universal lintas campaign (intro hooks & sfx bank)
-├── subtitles/                          # Arsip subtitle format ASS teruji
-├── .env.example                        # Template konfigurasi variabel environment
-├── .gitignore                          # Konfigurasi proteksi kredensial & file video besar
-├── AGENTS.md                           # Standar emas operasional produksi resmi
-├── LICENSE                             # Lisensi open-source MIT
-├── README.md                           # Dokumentasi komprehensif ini
-└── requirements.txt                    # Daftar dependensi Python
+│
+├── .agents/
+│   └── skills/
+│       └── ffmpeg-skill/
+│
+├── assets/
+│   ├── clips/
+│   ├── sfx/
+│   ├── banner.png
+│   ├── endcard.png
+│   ├── endcard_overlay.png
+│   ├── intro_badge.png
+│   └── ...
+│
+├── campaigns/
+│   └── <campaign>/
+│       ├── assets/
+│       ├── edits/
+│       └── output/
+│
+├── prompts/
+│   └── campaign_intake.md
+│
+├── scripts/
+│   ├── gemini_tts.py
+│   ├── batch_generate_10_voices.py
+│   ├── render_retention.py
+│   └── align_and_group_phrases.py
+│
+├── shared/
+├── subtitles/
+│
+├── .env.example
+├── AGENTS.md
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
-## 📝 Format Metadata SEO Pendamping
+# Typical Commands
 
-Setiap video final didampingi file metadata markdown (contoh: `01_how_to_fisch_metadata.md`):
+### Generate voiceover
 
-```markdown
-# Metadata Video — How to Fisch #01
-
-### 1. Pilihan Judul (High CTR)
-- **Option 1 (Curiosity Hook):** THIS ROBLOX FISHING GAME GETS ILLEGAL FAST...
-- **Option 2 (Story Hook):** Why Did This Clam Just Pull Out a Shotgun on Me?
-- **Option 3 (Algorithmic SEO):** How to Fisch Roblox Beginners Guide & Best Secret Rods
-- **Option 4 (Question Hook):** Can You Survive the Giant Spider Crab in How to Fisch?
-
-### 2. Deskripsi Algoritma
-Think this is just another chill fishing game on Roblox? Think again! How to Fisch lets you battle mutant sea beasts with heavy weapons. 
-👉 Play How to Fisch on Roblox now (Link in Bio)!
-
-### 3. Hashtag Terkurasi
-#Roblox #HowToFisch #RobloxGames #RobloxViral #GamingOnTikTok #FYP
-
-### 4. Pinned Comment
-"What level rod are you using right now? Drop your setup below 👇"
-```
-
----
-
-## ❓ FAQ & Troubleshooting
-
-### 1. Error: `GEMINI_API_KEY environment variable is not set`
-Pastikan file `.env` sudah dibuat di root folder dan memuat key yang valid:
 ```bash
-# Windows PowerShell
-$env:GEMINI_API_KEY="AIzaSyYourKey..."
+python scripts/gemini_tts.py
 ```
 
-### 2. Subtitle tidak tampil atau font kembali ke Arial
-Pastikan font `Impact` terpasang di sistem operasi Anda. Untuk pengguna Linux:
+### Remove silence
+
 ```bash
-sudo apt-get install ttf-mscorefonts-installer && sudo fc-cache -f -v
+python .agents/skills/ffmpeg-skill/scripts/silence.py \
+  temp/raw_tts.wav \
+  --stop-duration 0.10 \
+  --stop-threshold -35dB \
+  --output temp/voiceover_tight.wav
 ```
 
-### 3. Video mengalami timestamp freeze saat transisi
-Sistem Whop Game Clipping secara otomatis memaksakan flag Constant Frame Rate (CFR):
-`-fps_mode cfr -r 30 -video_track_timescale 15360` untuk menjamin rendering mulus tanpa desync audio.
+### Generate subtitles
+
+```bash
+python scripts/align_and_group_phrases.py
+```
+
+### Render final video
+
+```bash
+python scripts/render_retention.py \
+  campaigns/how_to_fisch/edits/09_fish_fight_back.json
+```
+
+### Validate output
+
+```bash
+python .agents/skills/ffmpeg-skill/scripts/check.py \
+  campaigns/how_to_fisch/output/01_final_video.mp4 \
+  --platform tiktok
+```
 
 ---
 
-## 🤝 Kontribusi & Lisensi
+# Why this exists
 
-Proyek ini dirilis di bawah lisensi terbuka [MIT License](LICENSE). 
-Kontribusi berupa pull request, optimasi skrip FFmpeg, atau penambahan preset sfx baru sangat dipersilakan!
+Short-form content rewards volume.
+
+But volume usually means repetition.
+
+More clips means:
+
+- More cutting
+- More subtitles
+- More voiceovers
+- More exports
+- More QA
+- More time staring at a timeline
+
+This project tries to invert that equation.
+
+```text
+Traditional:
+
+Human → Human → Human → Human → Human
+         ↓
+       Video
+
+
+This:
+
+Human → Agent → Pipeline → Video
+```
+
+You still decide **what should be made**.
+
+The pipeline handles **how the boring parts get made**.
+
+---
+
+# Design Philosophy
+
+### Automate the boring stuff
+
+If a task can be reliably repeated by a script, it probably shouldn't require a human mouse click.
+
+### Keep humans in the creative loop
+
+Automation handles execution.
+
+Humans handle:
+
+- Creative direction
+- Story ideas
+- Angles
+- Taste
+- Final approval
+
+### Optimize for iteration
+
+The real advantage isn't making one video faster.
+
+It's being able to make the **next** video without starting from zero.
+
+---
+
+# Cost
+
+### Software
+
+**$0**
+
+This repository is MIT licensed and can be self-hosted.
+
+### Infrastructure
+
+You can run the pipeline locally on your own machine.
+
+### AI
+
+The pipeline supports Gemini API-based generation. Your actual API cost depends on the provider, account, model, quota, and usage.
+
+With available free-tier quotas, you can keep the software workflow at effectively **$0** for experimentation.
+
+---
+
+# Built For
+
+This project is especially useful for:
+
+- Whop Content Rewards
+- Game publishers
+- Game clipping campaigns
+- Roblox creators
+- TikTok creators
+- YouTube Shorts creators
+- Instagram Reels creators
+- High-volume short-form production
+- Automated content pipelines
+
+---
+
+# Disclaimer
+
+This project is an independent open-source automation tool.
+
+It is not affiliated with, endorsed by, or officially connected to Whop, TikTok, YouTube, Instagram, Google, Roblox, or any game publisher referenced in campaign assets.
+
+Always follow the rules of the campaign, platform, and content rights holder you are working with.
+
+---
+
+# License
+
+MIT License.
+
+See [`LICENSE`](LICENSE) for details.
 
 ---
 
 <div align="center">
-  <b>Whop Game Clipping Team</b> &bull; <i>Engineering Maximum Retention & High-Velocity Video Production.</i>
+
+**Stop dragging clips around. Start shipping them.**
+
+Made for people who'd rather make content than edit timelines.
+
 </div>
