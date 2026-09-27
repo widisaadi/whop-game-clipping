@@ -268,7 +268,8 @@ Then add your API key:
 GEMINI_API_KEY=your_api_key_here
 ```
 
-You can get a Gemini API key from Google AI Studio.
+Get your free Gemini API key directly here:  
+👉 **[Google AI Studio — Get API Key](https://aistudio.google.com/app/apikey)** (log in with your Google account and click "Create API key").
 
 > **Cost note:** The repository itself is open-source and free to run. API usage depends on the provider and your account's available free tier / quota. The goal of this project is to keep the software pipeline at **$0 software cost** when used with available free-tier resources.
 
