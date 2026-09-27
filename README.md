@@ -289,7 +289,22 @@ The pipeline is designed for FFmpeg 6.0+.
 
 ---
 
-## 5. Run a dry test
+## 5. Default BGM (Background Music)
+
+The pipeline includes Kevin MacLeod's royalty-free track **"Sneaky Snitch"** as the default background music (`assets/bgm.mp3`).
+
+Download or verify the default BGM:
+
+```bash
+python scripts/download_default_bgm.py
+```
+
+> 🎵 **Want to use your own BGM?**  
+> You can easily swap the music anytime! Just replace `assets/bgm.mp3` with your own audio track (MP3, WAV, AAC, M4A), or point the `music` path in your campaign edit configuration to your custom audio file.
+
+---
+
+## 6. Run a dry test
 
 ```bash
 python scripts/render_retention.py \
@@ -401,6 +416,7 @@ Finish the story and transition into the required campaign CTA.
 
 | Component | What it does |
 |---|---|
+| `scripts/download_default_bgm.py` | Downloads default royalty-free BGM (Sneaky Snitch) |
 | `scripts/gemini_tts.py` | Gemini TTS voice generation |
 | `scripts/batch_generate_10_voices.py` | Batch voice generation |
 | `scripts/render_retention.py` | Main video rendering pipeline |
