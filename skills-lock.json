@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "skills": {
+    "cavecrew": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/cavecrew/SKILL.md",
+      "computedHash": "32d5320fb7c8b717e8c434e250ac987bebf48f553d0444afbe8215ea38ae5c09"
+    },
+    "caveman": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman/SKILL.md",
+      "computedHash": "43ab924e4422a09c24d16dc81349771513bc801c1be21077c252952fe753e6b6"
+    },
+    "caveman-commit": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-commit/SKILL.md",
+      "computedHash": "b416cf134b0f33ddadeca7977aebdbb2d3db79a166d0fce2e1aabeec98132766"
+    },
+    "caveman-compress": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-compress/SKILL.md",
+      "computedHash": "d171ec4013ed22754a72383a55b0ed934c005897d0f2eb0cebb3484af69a22e5"
+    },
+    "caveman-discover": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-discover/SKILL.md",
+      "computedHash": "6850e0ca7bd7a35a1f447cbd342f91b76ece1fb2e3473ad894e51e69746df8a2"
+    },
+    "caveman-evidence-review": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-evidence-review/SKILL.md",
+      "computedHash": "6a2db0191082500739416c87ff896a7894f98aa867f15c70fe932e4d72edd327"
+    },
+    "caveman-explore": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-explore/SKILL.md",
+      "computedHash": "e22fc4edb9feb5046809c74d969b06092b8d7db851aa8502a53a185bba27c57a"
+    },
+    "caveman-help": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-help/SKILL.md",
+      "computedHash": "8b03b0526c2c96f9b44dfde8f2d0063351ec9bbfa946de7a6316c96f6024ca75"
+    },
+    "caveman-learn": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-learn/SKILL.md",
+      "computedHash": "d25fd3ece9b571e1cffd93ca2594ab1919471b27b9c1589fc1c8b7e9c7d6071b"
+    },
+    "caveman-manage": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-manage/SKILL.md",
+      "computedHash": "fdd3834941a8a576cae0ac96a38dfec6ac4bd26ef209ba9997468ca11aaf19f4"
+    },
+    "caveman-optimize": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-optimize/SKILL.md",
+      "computedHash": "5e859a3a8305b5559b2f528616f634324449a426054704d43ef0b6ec8c1d9807"
+    },
+    "caveman-review": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-review/SKILL.md",
+      "computedHash": "36a4007c5c0c6b90b5accfee1cd769a86e4963b651dece2ce5f17a223a0abb4b"
+    },
+    "caveman-setup": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-setup/SKILL.md",
+      "computedHash": "b12b9f8f3fe6b499334a4b319ae1a16aa2da5c2d11e5bc85efd3236eac5213aa"
+    },
+    "caveman-stats": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-stats/SKILL.md",
+      "computedHash": "f59785c3571b4016fda470fef975adf48af2b29cac0df0ad43c8c8a8d1bd8f88"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "899b84384f74f540ea5284d9b2e9234e050998b42eacc805410b518d4226c0b3"
+    },
+    "gpt-taste": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/gpt-tasteskill/SKILL.md",
+      "computedHash": "7bd1bfdda0e51016ca222693401a65fc0dd9bf9487e0bd5b1740ba510f6f963a"
+    },
+    "industrial-brutalist-ui": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/brutalist-skill/SKILL.md",
+      "computedHash": "e66e5a2a8b73cef79ab6546459c665e8b983645689c5f3772f7eed8b9f1e8e0e"
+    },
+    "investigate-first": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/investigate-first/SKILL.md",
+      "computedHash": "59b581b5abfc0e19b7dd5a7c3bb2b16621ab5e94e085065c7b724a9c86cc3d4d"
+    },
+    "lean-build": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/lean-build/SKILL.md",
+      "computedHash": "6074721f1653e6e9d6381595b094284807b8d5d001d7d3977ec534679b16a63c"
+    },
+    "migration": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/migration/SKILL.md",
+      "computedHash": "7348b2d21ca05bdecc1e4ec2c8b63515ccb1700c8a261fdbd458b04b7383945b"
+    },
+    "safe-refactor": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/safe-refactor/SKILL.md",
+      "computedHash": "9df34a21a7a2c18ce13dbbe4a3f66b4e91df9e4bc33c1c9da8a80261583367ec"
+    },
+    "surgical-patch": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/surgical-patch/SKILL.md",
+      "computedHash": "028b9c3574142d19639d9f8eb11fbb01c58479f8f441e957d598a7215e79f95d"
+    },
+    "verify-and-stop": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/verify-and-stop/SKILL.md",
+      "computedHash": "3d67de16a2b3c48b643bc511ebc4cb86e6c7105215d8428b6140cbcb73aba4e6"
+    },
+    "youtube-marketing": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "93edb74e847f5eb536cec2d33309d0c271a37343f207980b5245ba612a3133f6"
+    },
+    "yt-audience-insights": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-audience-insights/SKILL.md",
+      "computedHash": "1f002110e7951013bf39463b82094b71c6b90903383c2da0a0a337d5b0c1d6ab"
+    },
+    "yt-channel-optimizer": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-channel-optimizer/SKILL.md",
+      "computedHash": "5faa60ab9712b79fadcfb7f3cbebc8ce2dcff88435d535697f23ae80ebead558"
+    },
+    "yt-community-post-writer": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-community-post-writer/SKILL.md",
+      "computedHash": "de7231def7ec2ed0c43d17b81fe0f9b94872037fd4d8059a89ee2947baa3e807"
+    },
+    "yt-content-planner": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-content-planner/SKILL.md",
+      "computedHash": "c949878d49834cd10d9b667238d0c9a3c6ddb3a9aed97e6d77f6d363731d35cd"
+    },
+    "yt-description-writer": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-description-writer/SKILL.md",
+      "computedHash": "2976868878d36ebb86326c9bd65b98ca9382f187fa582dc0b81f55f9df0c7e43"
+    },
+    "yt-hook-scripter": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-hook-scripter/SKILL.md",
+      "computedHash": "1074b93120da0ce195ead3815801c47a0e2c6eace2f64d52d5379d985303f2c5"
+    },
+    "yt-repurposer": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-repurposer/SKILL.md",
+      "computedHash": "980b5d0c734daf7ce469f3ef13022b3e8bc296a971cab31f208c9444afa0607c"
+    },
+    "yt-thumbnail-brief": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-thumbnail-brief/SKILL.md",
+      "computedHash": "1d3c0feb8bf05a6a4526d5e259457d12e48d816cf3e9ef73bf6deddc49cef7da"
+    },
+    "yt-title-optimizer": {
+      "source": "sergebulaev/youtube-skills",
+      "sourceType": "github",
+      "skillPath": "skills/yt-title-optimizer/SKILL.md",
+      "computedHash": "348c2c22f8bc28c325a843fb9fdf7ca7e1a8cc7ee93b74b530507d14f8cb3a0a"
+    }
+  }
+}

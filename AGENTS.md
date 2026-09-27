@@ -1,0 +1,30 @@
+# Aturan kerja BloxClips
+
+- Untuk ide konten, hook, skrip voiceover, storyboard, editing, metadata, dan evaluasi video, baca dan terapkan `prompts/bloxclips_system_prompt.md` sebelum bekerja.
+- Workspace ini untuk banyak campaign. Tentukan campaign dari brief/link pengguna; jangan otomatis memakai How to Fisch karena itu campaign yang sudah tersedia.
+- Saat pengguna memberikan Google Docs campaign guide untuk menyiapkan campaign, ikuti `prompts/campaign_intake.md`: baca seluruh guide, telusuri folder aset terkait, unduh seluruh aset yang bisa diakses, periksa hasil, lalu buat prompt khusus campaign. Pengunduhan aset dalam cakupan tersebut sudah termasuk permintaan pengguna; tidak perlu meminta konfirmasi rutin per file.
+- Simpan setiap campaign di `campaigns/<campaign_slug>/`. Baca `guide/campaign_guide.md` dan `guide/campaign_system_prompt.md` milik campaign aktif. Buat prompt khusus dari `prompts/templates/campaign_system_prompt.template.md`; jangan membawa nama, CTA, bahasa, logo, atau aturan campaign lain.
+- Preferensi gaya pengguna berasal dari video How to Fisch 01–08, terutama 08: subtitle Impact/pop, SFX, avatar pembuka, video vertikal penuh, serta motion/endcard 3D. Terapkan karakter editing ini jika sesuai guide campaign aktif; gunakan aset dan branding milik campaign aktif.
+- Eksperimen 09, `scripts/render_retention.py`, dan rekomendasi perubahan gaya dalam `retention_audit.md` bukan default. Jangan memakainya hanya karena nomor versinya lebih tinggi.
+- Bedakan referensi gaya dari bukti isi: periksa footage dan timing; komentar skrip lama tidak membuktikan kejadian dalam klip.
+- Jika permintaan hanya aturan/prompt/skrip, hasilkan dokumen yang diminta. Jangan otomatis merender, mengganti template, memanggil TTS, atau memublikasikan video.
+- Hormati arahan terbaru pengguna. Jangan menjanjikan viral atau kenaikan retensi tanpa data hasil publikasi.
+- **Standar Emas Produksi BloxClips (Berlaku untuk SEMUA Campaign Ada & Akan Datang):**
+  - **Formula Skrip Retensi 5-Beat (The 5-Beat Retention Machine):**
+    1. *Beat 1 — Velocity Hook (0.0s–2.0s):* Aksi kinetik berkecepatan tinggi / teaser kemustahilan yang langsung menyengat penonton tanpa sapaan/basa-basi.
+    2. *Beat 2 — Core Constraint / Absurd Premise (2.0s–6.0s):* Aturan gila atau batasan ekstrem ("jumping is banned", "trapped on island", "zero money").
+    3. *Beat 3 — The Absurd Tool / Gameplay Loop (6.0s–9.0s):* Solusi unik gameplay untuk bergerak/bertahan ("the only way to move is spitting your own tongue", "casting radioactive rod", "rolling money ball").
+    4. *Beat 4 — Progression & Multipliers Escalation (9.0s–15.0s):* Visual grinding, stacking massive multipliers di gym/training, stretching/growing ribuan studs melintasi jurang raksasa.
+    5. *Beat 5 — Peak Superpower & Clean Living Endcard CTA (15.0s–End):* Tease kekuatan puncak ("literally fly across the map", "catch mythical leviathan") diikuti pengenalan nama game & CTA bersih (`LINK IN BIO` atau `PLAY ON ROBLOX`).
+  - **Cadence & Pacing Cepat ("Gaada Napas"):** Delivery voiceover wajib cepat, berenergi tinggi, dan padat (~3.8–4.1 kata/detik). Pangkas semua dead air/jeda hening di atas 100ms (`silenceremove=stop_periods=-1:stop_duration=0.10:stop_threshold=-35dB,atempo=1.30..1.35`) agar penonton tidak memiliki celah untuk swipe.
+  - **Arsitektur Audio & Balance Mix:**
+    - *Voiceover:* Menggunakan model suara natural (default Puck atau voice native campaign, tanpa prompt tags emosi buatan), gain dinaikkan **+4 dB boost** (`volume=1.35,volume=4dB`) agar vokal tebal, tegas, dan selalu berada di depan musik.
+    - *BGM:* Track beat gaming berenergi tinggi (seperti `assets/bgm3.mp3`), gain diturunkan **-5 dB relatif terhadap vokal** (`volume=0.22,volume=-5dB` ≈ `0.124`), dengan smooth fade-out 1.9s di akhir video.
+    - *SFX Layer:* Micro-pops, whoosh transisi, dan impact bass terpisah di channel SFX (`volume=0.90`).
+    - *Normalisasi:* Wajib 2-Pass EBU R128 ke **`-14.0 LUFS` (`-1.5 dBTP`)**.
+  - **Sinkronisasi Semantik Visual-Audio (Wajib Literal 1:1):** Dilarang keras menaruh footage yang bertentangan dengan kata yang diucapkan voiceover. Setiap noun/verb pada naskah wajib dicocokkan frame-per-frame ke footage visual nyata (contoh: kata "treadmill / speed gym" wajib menampilkan karakter berlari di mesin treadmill/fast train, kata "trapped on island / jumping banned" wajib menampilkan karakter di floating island hub/obby, kata "spitting tongue" wajib menampilkan lidah ditembakkan menjembatani celah). Dilarang mengasumsikan isi footage dari nama file semata; verifikasi frame visual wajib dilakukan sebelum render final.
+  - **Framing Ambient Blurred Backdrop:** Footage gameplay di-frame 1:1 sharp square di tengah (`1080x1080`, Y=420..1500) dengan blurred mirror background di kanvas 9:16 (`1080x1920`, `boxblur=26:6, eq=brightness=-0.18:contrast=1.05`). Dilarang memotong footage 16:9 secara penuh ke 9:16 agar UI game, weapon inventory, kotak kode, tombol aksi, dan boss health bar tidak terpotong.
+  - **Subtitle Impact Kinetic Pop:** Huruf Impact kinetic pop (`Impact 96-102`, outline 8-9px hitam pekat, shadow 5-6px, highlight Gold/Green/Red/White) ditempatkan di `X = 540, Y = 1180` (Lower Gameplay Zone, di celah bawah gameplay). DILARANG menambahkan top flame hook banner. Subtitle gameplay wajib berhenti tepat sebelum endcard dimulai.
+  - **Living Endcard (Focal Center):** Ditempatkan di area tengah layar (focal center), tidak boleh menempel di tepi atas. Teks murni CTA (`LINK IN BIO` untuk Roblox bio link / `PLAY ON ROBLOX` untuk search) di baseline `Y = 1180` (Impact 96 putih, outline hitam, tanpa box/background), foto branding resmi game card / crowned boss icon (`000.png` atau icon resmi) tepat di atasnya dengan gap 24px (lebar card presisi seukuran judul game), dan judul game tepat di atas card dengan gap 24px.
+  - **Render & CFR Pipeline:** Seluruh segmen video wajib di-render CFR 30.00 fps (`fps=30,setsar=1,format=yuv420p`), `-video_track_timescale 15360`, `-r 30` untuk mencegah timestamp freeze pada transisi segmen. Color tag BT.709.
+

@@ -1,0 +1,94 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: WordWhite,Impact,76,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,7,4,5,60,60,60,1
+Style: WordGold,Impact,84,&H0020E5FF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,5,5,60,60,60,1
+Style: WordRed,Impact,84,&H003344FF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,5,5,60,60,60,1
+Style: WordGreen,Impact,84,&H0033FF66,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,2,0,1,8,5,5,60,60,60,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.36,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THIS
+Dialogue: 0,0:00:00.36,0:00:01.04,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ROBLOX
+Dialogue: 0,0:00:01.04,0:00:01.36,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}FISHING
+Dialogue: 0,0:00:01.36,0:00:01.62,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}GAME
+Dialogue: 0,0:00:01.62,0:00:01.86,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}GETS
+Dialogue: 0,0:00:01.86,0:00:02.60,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}CRAZIER
+Dialogue: 0,0:00:02.60,0:00:02.84,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:02.84,0:00:03.14,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}FURTHER
+Dialogue: 0,0:00:03.14,0:00:03.34,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOU
+Dialogue: 0,0:00:03.34,0:00:03.76,WordGreen,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}SAIL!
+Dialogue: 0,0:00:04.28,0:00:05.14,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}HOW TO FISCH
+Dialogue: 0,0:00:05.52,0:00:06.08,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ISLAND 1
+Dialogue: 0,0:00:06.08,0:00:06.28,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}IS
+Dialogue: 0,0:00:06.28,0:00:06.46,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}JUST
+Dialogue: 0,0:00:06.46,0:00:06.68,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:06.68,0:00:06.98,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}CALM
+Dialogue: 0,0:00:06.98,0:00:07.38,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}BEFORE
+Dialogue: 0,0:00:07.38,0:00:07.56,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:07.56,0:00:08.06,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}STORM!
+Dialogue: 0,0:00:08.34,0:00:08.60,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ONCE
+Dialogue: 0,0:00:08.60,0:00:08.76,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOU
+Dialogue: 0,0:00:08.76,0:00:09.00,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}BUY
+Dialogue: 0,0:00:09.00,0:00:09.18,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOUR
+Dialogue: 0,0:00:09.18,0:00:09.70,WordGreen,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}MOTORBOAT
+Dialogue: 0,0:00:09.70,0:00:09.86,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}AND
+Dialogue: 0,0:00:09.86,0:00:10.04,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}HIT
+Dialogue: 0,0:00:10.04,0:00:10.20,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:10.20,0:00:10.52,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}OPEN
+Dialogue: 0,0:00:10.52,0:00:10.90,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}WATER,
+Dialogue: 0,0:00:11.12,0:00:11.52,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}EVERYTHING
+Dialogue: 0,0:00:11.52,0:00:12.10,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}CHANGES!
+Dialogue: 0,0:00:12.38,0:00:12.54,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ON
+Dialogue: 0,0:00:12.52,0:00:13.18,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ISLAND 2
+Dialogue: 0,0:00:13.52,0:00:13.68,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOU
+Dialogue: 0,0:00:13.58,0:00:13.82,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}MEET
+Dialogue: 0,0:00:13.82,0:00:14.22,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}GRANNY,
+Dialogue: 0,0:00:14.60,0:00:14.78,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}SELLING
+Dialogue: 0,0:00:14.78,0:00:15.74,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}SHOTGUNS,
+Dialogue: 0,0:00:15.74,0:00:15.90,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}AND
+Dialogue: 0,0:00:15.80,0:00:16.18,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}LIVING
+Dialogue: 0,0:00:16.18,0:00:17.20,WordGreen,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}BURRITO BAIT!
+Dialogue: 0,0:00:17.40,0:00:17.74,WordGreen,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}UPGRADE
+Dialogue: 0,0:00:17.74,0:00:17.92,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}TO
+Dialogue: 0,0:00:17.92,0:00:18.08,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:18.04,0:00:18.52,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}GOLD ROD
+Dialogue: 0,0:00:18.52,0:00:18.74,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}AND
+Dialogue: 0,0:00:18.74,0:00:19.04,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}WATCH
+Dialogue: 0,0:00:19.04,0:00:19.40,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}OUT!
+Dialogue: 0,0:00:19.54,0:00:19.72,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}BECAUSE
+Dialogue: 0,0:00:19.72,0:00:20.62,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}MUTANT SEA BEASTS
+Dialogue: 0,0:00:20.62,0:00:21.08,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}WILL
+Dialogue: 0,0:00:21.08,0:00:21.36,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ATTACK
+Dialogue: 0,0:00:21.36,0:00:21.60,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOU
+Dialogue: 0,0:00:21.60,0:00:21.90,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ON
+Dialogue: 0,0:00:21.90,0:00:22.28,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}LAND!
+Dialogue: 0,0:00:22.74,0:00:23.16,WordGold,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}SURVIVE
+Dialogue: 0,0:00:23.16,0:00:23.32,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:23.30,0:00:23.48,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}RAID
+Dialogue: 0,0:00:23.48,0:00:23.66,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}AND
+Dialogue: 0,0:00:23.66,0:00:23.86,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}TAKE
+Dialogue: 0,0:00:23.86,0:00:24.08,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}DOWN
+Dialogue: 0,0:00:24.08,0:00:24.28,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THE
+Dialogue: 0,0:00:24.28,0:00:24.60,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}RUTHLESS
+Dialogue: 0,0:00:24.60,0:00:25.50,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}PIKE FISH BOSS!
+Dialogue: 0,0:00:25.50,0:00:25.88,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}WITH
+Dialogue: 0,0:00:25.88,0:00:26.04,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOUR
+Dialogue: 0,0:00:26.04,0:00:26.38,WordWhite,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}OWN
+Dialogue: 0,0:00:26.38,0:00:27.14,WordRed,,0,0,0,,{\pos(540,980)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}FIREPOWER!
+Dialogue: 0,0:00:27.14,0:00:27.46,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}THINK
+Dialogue: 0,0:00:27.46,0:00:27.66,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}YOU
+Dialogue: 0,0:00:27.66,0:00:27.88,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}HAVE
+Dialogue: 0,0:00:27.88,0:00:28.04,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}WHAT
+Dialogue: 0,0:00:28.02,0:00:28.18,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}IT
+Dialogue: 0,0:00:28.14,0:00:28.42,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}TAKES?
+Dialogue: 0,0:00:28.64,0:00:28.94,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}SEARCH
+Dialogue: 0,0:00:28.94,0:00:29.72,WordGold,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}HOW TO FISCH
+Dialogue: 0,0:00:29.72,0:00:30.52,WordGold,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}ON ROBLOX
+Dialogue: 0,0:00:30.52,0:00:30.68,WordWhite,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}AND
+Dialogue: 0,0:00:30.60,0:00:31.54,WordGreen,,0,0,0,,{\pos(540,1460)}{\fscx125\fscy125\t(0,70,\fscx100\fscy100)}PLAY RIGHT NOW!!

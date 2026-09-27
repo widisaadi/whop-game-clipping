@@ -1,0 +1,53 @@
+# ==============================================================================
+# BloxClips Game Clipping Automation - .gitignore
+# ==============================================================================
+
+# 1. Kredensial, Secrets, & Environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+token.json
+
+# 2. Direktori Sementara & Cache Render (PENTING: Render outputs & raw audio)
+temp/
+scratch/
+.qodo/
+*.log
+temp_gdoc.txt
+
+# 3. Python Bytecode & Runtime Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# 4. Large Raw Video Footage & Render Outputs
+# Pengecualian: Mempertahankan intro template & sample cut segments
+assets/*.mp4
+*.mp4
+*.mov
+*.avi
+*.mkv
+!shared/hooks/INTRO.mp4
+!assets/clips/*.mp4
+
+# Output video hasil render campaign
+campaigns/**/output/*.mp4
+output/
+
+# 5. OS & IDE Metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

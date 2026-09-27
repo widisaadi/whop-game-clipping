@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whop Game Clipping Studio &mdash; High-Retention Video Automation & Distribution Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+  
+  <!-- Fonts: Outfit (Display & UI), JetBrains Mono (Code/Telemetry) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#030712',
+            void: '#070D1D',
+            surface: '#0F172A',
+            card: '#131D33',
+            borderGlow: 'rgba(255, 255, 255, 0.08)',
+            accentEmerald: '#10B981',
+            accentCyan: '#06B6D4',
+            accentGold: '#F59E0B',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP & Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #F8FAFC;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Ambient atmospheric backdrop */
+    .ambient-glow {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
+    }
+
+    .glass-pill {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(19, 29, 51, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(3, 7, 18, 0.6);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+    }
+
+    /* Video Player Aspect 9:16 Modal */
+    .aspect-vertical {
+      aspect-ratio: 9 / 16;
+    }
+
+    /* Live Telemetry Pulse */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.95); }
+    }
+    .live-dot {
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient Lighting -->
+  <div class="ambient-glow"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-8 right-8 z-50 flex items-center gap-3 px-5 py-3.5 glass-pill rounded-full shadow-2xl border border-emerald-500/40 opacity-0 translate-y-6 pointer-events-none transition-all duration-300">
+    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+    <span id="toast-text" class="text-sm font-medium text-slate-100">Copied to clipboard</span>
+  </div>
+
+  <main class="relative z-10 w-full max-w-full overflow-x-hidden">
+
+    <!-- FLOATING SPLIT GLASS NAVIGATION -->
+    <header class="fixed top-6 left-0 right-0 z-40 px-4 md:px-8 max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Brand Pill -->
+      <div class="flex items-center gap-3 px-5 py-2.5 glass-pill rounded-full shadow-lg">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500 via-emerald-400 to-amber-400 p-[1.5px] flex items-center justify-center">
+          <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
+            <i data-lucide="clapperboard" class="w-4 h-4 text-cyan-400"></i>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
+            Whop Clipping <span class="text-xs font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">STUDIO</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Nav Jump & Campaign Switcher -->
+      <div class="flex items-center gap-3">
+        <!-- Campaign Selector Pill -->
+        <div class="hidden sm:flex items-center p-1 glass-pill rounded-full gap-1 text-xs font-medium">
+          <button id="nav-btn-te" onclick="switchCampaign('tongue_escape')" class="px-3.5 py-1.5 rounded-full transition-all duration-200 bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
+            +1 Tongue Escape
+          </button>
+          <button id="nav-btn-htf" onclick="switchCampaign('how_to_fisch')" class="px-3.5 py-1.5 rounded-full transition-all duration-200 text-slate-400 hover:text-white">
+            How to Fisch
+          </button>
+        </div>
+
+        <!-- CFR Engine Status -->
+        <div class="flex items-center gap-2 px-4 py-2 glass-pill rounded-full text-xs text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
+          <span class="font-mono tracking-wider font-semibold">CFR 30.00 FPS</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ATTENTION (HERO): ARTISTIC ASYMMETRY -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-28 px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Text (2-Line Clamp Guaranteed) -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-cyan-400 mb-6 border border-cyan-500/30">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Standardized High-Retention Pipeline</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] text-white mb-6 max-w-5xl">
+            Roblox Video Automation, <br class="hidden sm:inline">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-300 to-amber-300">
+              Engineered with Mathematical Precision
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8 max-w-2xl">
+            High-velocity short-form engine combining kinetic Impact subtitles, ambient blurred mirror framing, AI voiceover alignment, and instant 1-click social deployment.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            <a href="#pipeline-section" class="px-7 py-3.5 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide hover:bg-slate-200 transition-all duration-200 shadow-xl shadow-white/10 flex items-center gap-2">
+              <i data-lucide="play-circle" class="w-4 h-4"></i>
+              <span>Launch Pipeline Runner</span>
+            </a>
+            <a href="#video-library" class="px-7 py-3.5 rounded-full glass-card text-white font-semibold text-sm tracking-wide hover:bg-white/10 transition-all duration-200 flex items-center gap-2">
+              <i data-lucide="folder-video" class="w-4 h-4"></i>
+              <span>Browse 16 Master Videos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Overlapping Glass Telemetry Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative w-full rounded-2xl glass-card p-6 overflow-hidden border border-white/10">
+            <!-- Background Radial Spot -->
+            <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-cyan-500/10 blur-2xl"></div>
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+              <div class="flex items-center gap-2">
+                <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+                <span class="text-xs font-mono font-bold tracking-wider text-slate-200">PRODUCTION TELEMETRY</span>
+              </div>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">13/13 AUDIT PASS</span>
+            </div>
+
+            <!-- Telemetry Parameters Matrix -->
+            <div class="grid grid-cols-2 gap-3 font-mono text-xs mb-4">
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                <span class="text-slate-400 block text-[11px]">GEOMETRY</span>
+                <span class="text-slate-100 font-bold">1080x1920 (9:16)</span>
+                <span class="text-emerald-400 block text-[10px] mt-0.5">1:1 Ambient Backdrop</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                <span class="text-slate-400 block text-[11px]">TIMING DRIFT</span>
+                <span class="text-slate-100 font-bold">0.000 ms</span>
+                <span class="text-emerald-400 block text-[10px] mt-0.5">Timescale 15360</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                <span class="text-slate-400 block text-[11px]">EBU R128</span>
+                <span class="text-slate-100 font-bold">-14.0 LUFS</span>
+                <span class="text-cyan-400 block text-[10px] mt-0.5">-1.5 dBTP Peak</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                <span class="text-slate-400 block text-[11px]">SUBTITLE SYNC</span>
+                <span class="text-slate-100 font-bold">Baseline Y=1180</span>
+                <span class="text-amber-400 block text-[10px] mt-0.5">Zero UI Obstruction</span>
+              </div>
+            </div>
+
+            <!-- Active Campaign Indicator Card -->
+            <div id="active-campaign-banner" class="p-3 rounded-xl bg-gradient-to-r from-emerald-950/40 to-slate-900/60 border border-emerald-500/20 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                <div>
+                  <span id="hero-campaign-name" class="text-xs font-bold text-white block">+1 Tongue Escape</span>
+                  <span class="text-[10px] text-slate-400 font-mono">6 Videos Available &bull; Master Approved</span>
+                </div>
+              </div>
+              <button onclick="scrollToLibrary()" class="text-xs font-medium text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                <span>View</span>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTEREST: GAPLESS DENSE BENTO GRID -->
+    <section class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white mb-2">
+          Architectural Editing Standards
+        </h2>
+        <p class="text-sm md:text-base text-slate-400 max-w-2xl">
+          Formulaic rules applied across all campaigns to ensure maximum watch-time, flawless UI retention, and zero platform friction.
+        </p>
+      </div>
+
+      <!-- Gapless Bento Grid with grid-flow-dense -->
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-flow-dense gap-6">
+        
+        <!-- Card 1: Ambient Blurred Backdrop (Span 2) -->
+        <div class="md:col-span-2 rounded-2xl glass-card p-7 relative overflow-hidden group hover:scale-[1.01] transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono font-bold tracking-wider text-cyan-400">FRAMING SPECIFICATION</span>
+            <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-semibold">1:1 Sharp Center</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Ambient Blurred Backdrop Geometry</h3>
+          <p class="text-sm text-slate-300 leading-relaxed mb-6">
+            Raw 16:9 gameplay is never cropped directly to 9:16. By nesting a sharp 1:1 square at Y=420..1500 over a darkened, blurred mirror background, 100% of weapon hotbars, boss health bars, and item inventories remain visible.
+          </p>
+          <div class="rounded-xl bg-slate-950/80 p-3.5 font-mono text-xs text-slate-400 border border-white/5">
+            <span class="text-cyan-400">[0:v]</span> split [fg][bg]; [bg] boxblur=26:6, eq=brightness=-0.18; [fg] overlay=0:420
+          </div>
+        </div>
+
+        <!-- Card 2: Lower Gameplay Subtitles (Span 1) -->
+        <div class="rounded-2xl glass-card p-7 relative overflow-hidden group hover:scale-[1.01] transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono font-bold tracking-wider text-amber-400">TYPOGRAPHY</span>
+            <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-semibold">Impact 96</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Baseline Y=1180 Sync</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Kinetic pop typography anchored precisely in the lower gameplay zone. Top flame banners are banned to keep the viewing zone clean.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-mono text-amber-300 bg-amber-500/10 px-3 py-2 rounded-lg">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            <span>Stops before Living Endcard</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Living 3D Endcard (Span 1) -->
+        <div class="rounded-2xl glass-card p-7 relative overflow-hidden group hover:scale-[1.01] transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono font-bold tracking-wider text-emerald-400">ENDCARD</span>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-semibold">Focal Center</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Zero-Box Clean CTA</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Title at top, official rounded icon with 24px gap, and pure text CTA at baseline Y=1180 with subtle sinusoidal breathing physics.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-300 bg-emerald-500/10 px-3 py-2 rounded-lg">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>TikTok Safe-Zone Cleared</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Audio Engineering Matrix (Span 4) -->
+        <div class="md:col-span-3 lg:col-span-4 rounded-2xl glass-card p-7 relative overflow-hidden group">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10 mb-6">
+            <div>
+              <span class="text-xs font-mono font-bold tracking-wider text-slate-400">AUDIO NORMALIZATION PIPELINE</span>
+              <h3 class="text-xl font-bold text-white mt-1">EBU R128 Dual-Pass Loudness Standard</h3>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-200 text-xs font-mono">Integrated: -14.0 LUFS</span>
+              <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-200 text-xs font-mono">True Peak: -1.5 dBTP</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
+            <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5">
+              <span class="text-slate-400 block mb-1">VOICE PROFILE (Aoede / Callirrhoe)</span>
+              <span class="text-slate-100 font-semibold">Tempo 1.15x &bull; High Energy Delivery</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5">
+              <span class="text-slate-400 block mb-1">BACKGROUND DUCKING</span>
+              <span class="text-slate-100 font-semibold">BGM2 @ 0.24 &bull; 2.0s Fadeout</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5">
+              <span class="text-slate-400 block mb-1">SFX TRACK STACK</span>
+              <span class="text-slate-100 font-semibold">Impact Whoosh, Riser, Chimes</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DESIRE: INTERACTIVE 7-STEP PIPELINE RUNNER -->
+    <section id="pipeline-section" class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl glass-card p-8 md:p-12 relative overflow-hidden border border-white/10">
+        <!-- Glowing background blob -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 pb-8 border-b border-white/10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold mb-3">
+              <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+              <span>Interactive Pipeline Simulation</span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-black text-white">Video Synthesis & Rendering Chain</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Step through the exact 7-stage automated workflow used to render every Whop Game Clipping master.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="run-pipeline-btn" onclick="runPipelineSimulation()" class="px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+              <i data-lucide="play" class="w-4 h-4 fill-slate-950"></i>
+              <span>Execute Render Sequence</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 7-Stage Process Stepper -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-8" id="pipeline-stepper">
+          <!-- Step 1 -->
+          <div id="pstep-1" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">01</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">Script Synthesis</span>
+            <span class="text-[10px] text-slate-400 block mt-1">3 High-CTR Hooks</span>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="pstep-2" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">02</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">Voiceover TTS</span>
+            <span class="text-[10px] text-slate-400 block mt-1">Aoede 1.15x Pace</span>
+          </div>
+
+          <!-- Step 3 -->
+          <div id="pstep-3" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">03</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">Alignment</span>
+            <span class="text-[10px] text-slate-400 block mt-1">Phonetic Subtitles</span>
+          </div>
+
+          <!-- Step 4 -->
+          <div id="pstep-4" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">04</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">SFX Assembly</span>
+            <span class="text-[10px] text-slate-400 block mt-1">Whoosh & Risers</span>
+          </div>
+
+          <!-- Step 5 -->
+          <div id="pstep-5" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">05</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">CFR Transcode</span>
+            <span class="text-[10px] text-slate-400 block mt-1">1:1 Square + Blur</span>
+          </div>
+
+          <!-- Step 6 -->
+          <div id="pstep-6" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">06</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">Normalization</span>
+            <span class="text-[10px] text-slate-400 block mt-1">-14.0 LUFS 2-Pass</span>
+          </div>
+
+          <!-- Step 7 -->
+          <div id="pstep-7" class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-mono text-slate-400 font-semibold">07</span>
+              <div class="w-2 h-2 rounded-full bg-slate-600 status-dot"></div>
+            </div>
+            <span class="text-xs font-bold text-slate-200 block">Platform Audit</span>
+            <span class="text-[10px] text-slate-400 block mt-1">13/13 TikTok Pass</span>
+          </div>
+        </div>
+
+        <!-- Live Terminal Log Output Stream -->
+        <div class="rounded-2xl bg-slate-950 p-5 font-mono text-xs border border-white/5 overflow-hidden">
+          <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[11px]">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500/60 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500/60 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/60 inline-block"></span>
+              <span class="ml-2 text-slate-300 font-semibold">studio_render_engine.log</span>
+            </div>
+            <span id="log-status-text" class="text-slate-400">Idle &bull; Ready</span>
+          </div>
+          <div id="terminal-stream" class="h-44 overflow-y-auto space-y-1.5 custom-scrollbar text-slate-300">
+            <div class="text-slate-500">[System] Whop Game Clipping Engine loaded. Select campaign and click 'Execute Render Sequence' to start.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACTION: MASTER VIDEO LIBRARY & 1-CLICK COPY COMMAND HUB -->
+    <section id="video-library" class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+      
+      <!-- Section Header with Campaign Filter Switcher -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-wider text-cyan-400 block mb-2">PRODUCTION OUTPUTS</span>
+          <h2 class="text-3xl md:text-4xl font-black text-white">Master Video Library</h2>
+          <p class="text-sm text-slate-400 mt-1">
+            Complete rendered deliverables with instant stream player, visual contact sheets, 1-click captions, and direct download.
+          </p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex items-center gap-2 p-1.5 glass-pill rounded-full self-start sm:self-auto">
+          <button id="filter-all" onclick="filterCampaign('all')" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 bg-white text-slate-950 shadow">
+            All Videos
+          </button>
+          <button id="filter-te" onclick="filterCampaign('tongue_escape')" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all duration-200">
+            +1 Tongue Escape (6)
+          </button>
+          <button id="filter-htf" onclick="filterCampaign('how_to_fisch')" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all duration-200">
+            How to Fisch (10)
+          </button>
+        </div>
+      </div>
+
+      <!-- Videos Grid -->
+      <div id="video-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically by JavaScript -->
+        <div class="col-span-full py-16 text-center text-slate-400 font-mono text-sm">
+          Loading campaign deliverables from server...
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER: HIGH-CONTRAST SYSTEM SUMMARY -->
+    <footer class="mt-20 border-t border-white/10 py-12 px-4 md:px-8 max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-6 h-6 rounded-full bg-cyan-400 flex items-center justify-center text-slate-950">
+            <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+          </div>
+          <span class="text-xs text-slate-300 font-medium">
+            Whop Game Clipping Production Standard &bull; Standar Paten High-Retention Automation
+          </span>
+        </div>
+        <div class="flex items-center gap-6 text-xs text-slate-400 font-mono">
+          <span>EBU R128 &bull; -14.0 LUFS</span>
+          <span>BT.709 Tagged</span>
+          <span>CFR 30.00 FPS</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- MODAL: VIDEO STREAM PLAYER -->
+  <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="relative w-full max-w-md rounded-2xl glass-card p-4 overflow-hidden border border-white/15">
+      <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+        <div>
+          <span id="modal-video-title" class="text-sm font-bold text-white block truncate">Video Preview</span>
+          <span id="modal-video-meta" class="text-[11px] font-mono text-slate-400">1080x1920 CFR 30fps</span>
+        </div>
+        <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Vertical 9:16 Video Container -->
+      <div class="relative w-full aspect-vertical bg-black rounded-xl overflow-hidden shadow-2xl flex items-center justify-center">
+        <video id="modal-video-element" controls playsinline class="w-full h-full object-contain"></video>
+      </div>
+
+      <!-- Quick Action Buttons Inside Modal -->
+      <div class="mt-4 flex items-center justify-between gap-3">
+        <button id="modal-download-btn" class="flex-1 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span>Download MP4</span>
+        </button>
+        <button id="modal-copy-btn" class="flex-1 py-2.5 rounded-xl glass-pill hover:bg-white/10 text-white font-semibold text-xs flex items-center justify-center gap-2">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span>Copy Caption</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CONTACT SHEET INSPECTOR -->
+  <div id="sheet-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="relative w-full max-w-4xl max-h-[90vh] rounded-2xl glass-card p-5 overflow-hidden flex flex-col border border-white/15">
+      <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10 flex-shrink-0">
+        <div>
+          <span id="modal-sheet-title" class="text-sm font-bold text-white block">Visual Contact Sheet Inspection</span>
+          <span class="text-[11px] font-mono text-slate-400">3x2 Grid Proof &bull; Framing &amp; Subtitle Position Verification</span>
+        </div>
+        <button onclick="closeSheetModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+      <div class="flex-1 overflow-auto rounded-xl bg-slate-950 p-2 flex items-center justify-center">
+        <img id="modal-sheet-image" src="" alt="Contact Sheet" class="max-h-[75vh] w-auto rounded-lg object-contain shadow-2xl">
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: 1-CLICK COPY COMMAND DRAWER -->
+  <div id="copy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="relative w-full max-w-2xl max-h-[90vh] rounded-2xl glass-card p-6 overflow-hidden flex flex-col border border-white/15">
+      <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10 flex-shrink-0">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-wider text-cyan-400">METADATA &amp; SOCIAL PACK</span>
+          <h3 id="drawer-video-title" class="text-lg font-bold text-white">Social Distribution Kit</h3>
+        </div>
+        <button onclick="closeCopyModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto space-y-5 custom-scrollbar pr-1">
+        
+        <!-- 3 High-CTR Hook Options -->
+        <div>
+          <span class="text-xs font-mono font-bold text-slate-300 block mb-2 flex items-center gap-1.5">
+            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span>3 High-CTR Hook Titles (A/B Test Options)</span>
+          </span>
+          <div id="drawer-hooks-list" class="space-y-2">
+            <!-- Hooks injected here -->
+          </div>
+        </div>
+
+        <!-- Copy-Ready Social Media Caption -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono font-bold text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span>Social Media Caption &amp; Hashtags</span>
+            </span>
+            <button id="copy-caption-btn" onclick="copyDrawerCaption()" class="text-xs px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 font-semibold flex items-center gap-1">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Copy Full Caption</span>
+            </button>
+          </div>
+          <textarea id="drawer-caption-text" readonly class="w-full h-32 rounded-xl bg-slate-950 p-3.5 font-mono text-xs text-slate-300 border border-white/10 focus:outline-none resize-none custom-scrollbar"></textarea>
+        </div>
+
+        <!-- Spoken Voiceover Script -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono font-bold text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="mic" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Spoken Voiceover Script (English)</span>
+            </span>
+            <button id="copy-vo-btn" onclick="copyDrawerVO()" class="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 font-semibold flex items-center gap-1">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Copy VO Script</span>
+            </button>
+          </div>
+          <div id="drawer-vo-text" class="rounded-xl bg-slate-950 p-3.5 text-xs text-slate-300 border border-white/10 italic leading-relaxed"></div>
+        </div>
+
+      </div>
+
+      <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-end flex-shrink-0">
+        <button onclick="closeCopyModal()" class="px-5 py-2 rounded-full glass-pill hover:bg-white/10 text-xs font-semibold text-slate-300">
+          Close Pack
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION LOGIC & API CONNECTORS -->
+  <script>
+    let allCampaigns = [];
+    let currentFilter = 'all';
+    let activeCampaignId = 'tongue_escape';
+    let currentDrawerData = null;
+
+    // Fetch campaigns and initialize
+    async function init() {
+      try {
+        const res = await fetch('/api/campaigns');
+        if (!res.ok) throw new Error('API fetch error');
+        allCampaigns = await res.json();
+        renderVideoCards();
+        lucide.createIcons();
+      } catch (err) {
+        console.error('Failed to load campaigns:', err);
+        document.getElementById('video-cards-grid').innerHTML = `
+          <div class="col-span-full py-16 text-center text-rose-400 font-mono text-sm">
+            Failed to connect to Studio API server on port 8080.
+          </div>
+        `;
+      }
+    }
+
+    // Switch campaign from header
+    function switchCampaign(campId) {
+      activeCampaignId = campId;
+      const btnTe = document.getElementById('nav-btn-te');
+      const btnHtf = document.getElementById('nav-btn-htf');
+      const heroCampName = document.getElementById('hero-campaign-name');
+
+      if (campId === 'tongue_escape') {
+        btnTe.className = 'px-3.5 py-1.5 rounded-full transition-all duration-200 bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30';
+        btnHtf.className = 'px-3.5 py-1.5 rounded-full transition-all duration-200 text-slate-400 hover:text-white';
+        heroCampName.textContent = '+1 Tongue Escape';
+      } else {
+        btnHtf.className = 'px-3.5 py-1.5 rounded-full transition-all duration-200 bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/30';
+        btnTe.className = 'px-3.5 py-1.5 rounded-full transition-all duration-200 text-slate-400 hover:text-white';
+        heroCampName.textContent = 'How to Fisch';
+      }
+
+      filterCampaign(campId);
+    }
+
+    // Filter cards
+    function filterCampaign(campId) {
+      currentFilter = campId;
+      const btnAll = document.getElementById('filter-all');
+      const btnTe = document.getElementById('filter-te');
+      const btnHtf = document.getElementById('filter-htf');
+
+      const activeClass = 'px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 bg-white text-slate-950 shadow';
+      const inactiveClass = 'px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all duration-200';
+
+      btnAll.className = campId === 'all' ? activeClass : inactiveClass;
+      btnTe.className = campId === 'tongue_escape' ? activeClass : inactiveClass;
+      btnHtf.className = campId === 'how_to_fisch' ? activeClass : inactiveClass;
+
+      renderVideoCards();
+    }
+
+    function scrollToLibrary() {
+      document.getElementById('video-library').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Render cards
+    function renderVideoCards() {
+      const container = document.getElementById('video-cards-grid');
+      let videosToShow = [];
+
+      allCampaigns.forEach(c => {
+        if (currentFilter === 'all' || currentFilter === c.id) {
+          c.videos.forEach(v => {
+            videosToShow.push({ ...v, campaignId: c.id, campaignName: c.name });
+          });
+        }
+      });
+
+      if (videosToShow.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-16 text-center text-slate-400 font-mono text-sm">No videos found for this campaign.</div>`;
+        return;
+      }
+
+      container.innerHTML = videosToShow.map(v => {
+        const isHTF = v.campaignId === 'how_to_fisch';
+        const badgeColor = isHTF ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+        const sheetUrl = `/api/sheet?campaign=${v.campaignId}&file=${v.sheet_filename || ''}`;
+        const videoStreamUrl = `/api/video?campaign=${v.campaignId}&file=${v.filename}`;
+        const downloadUrl = `/api/download?campaign=${v.campaignId}&file=${v.filename}`;
+
+        return `
+          <div class="rounded-2xl glass-card overflow-hidden flex flex-col group hover:border-white/20 transition-all duration-300">
+            
+            <!-- Video Thumbnail / Sheet Preview Area -->
+            <div class="relative h-48 bg-slate-950 overflow-hidden cursor-pointer" onclick='openVideoModal("${v.campaignId}", "${v.filename}", "${escapeHtml(v.title)}", "${v.duration}", "${v.size_mb}")'>
+              ${v.has_sheet ? `
+                <img src="${sheetUrl}" alt="${escapeHtml(v.title)}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+              ` : `
+                <div class="w-full h-full flex items-center justify-center bg-slate-900 text-slate-600">
+                  <i data-lucide="video" class="w-10 h-10"></i>
+                </div>
+              `}
+              
+              <!-- Floating Pill Overlay -->
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold border ${badgeColor}">
+                  ${v.campaignName}
+                </span>
+              </div>
+
+              <div class="absolute bottom-3 right-3 flex items-center gap-1.5 px-2 py-1 rounded bg-slate-950/80 backdrop-blur font-mono text-[11px] text-slate-200">
+                <i data-lucide="clock" class="w-3 h-3 text-cyan-400"></i>
+                <span>${v.duration}</span>
+                <span class="text-slate-500">&bull;</span>
+                <span>${v.size_mb} MB</span>
+              </div>
+
+              <!-- Center Play Icon Hover -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-slate-950/40 backdrop-blur-[2px]">
+                <div class="w-12 h-12 rounded-full bg-white text-slate-950 flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                  <i data-lucide="play" class="w-5 h-5 fill-slate-950 ml-0.5"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-mono text-slate-400 block mb-1.5 uppercase tracking-wider">${escapeHtml(v.angle)}</span>
+                <h4 class="text-base font-bold text-white line-clamp-1 group-hover:text-cyan-300 transition-colors">
+                  ${escapeHtml(v.title)}
+                </h4>
+                
+                <!-- Primary Hook Snippet -->
+                <p class="text-xs text-slate-300 mt-2 line-clamp-2 italic bg-slate-950/40 p-2.5 rounded-lg border border-white/5">
+                  "${escapeHtml(v.hooks[0] || 'High retention hook...')}"
+                </p>
+              </div>
+
+              <!-- Action Buttons Toolbar -->
+              <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
+                <!-- 1-Click Copy Pack -->
+                <button onclick='openCopyDrawer(${JSON.stringify(v).replace(/'/g, "&#39;")})' class="flex-1 py-2 px-3 rounded-xl glass-pill hover:bg-white/10 text-xs font-semibold text-slate-200 flex items-center justify-center gap-1.5 transition-colors">
+                  <i data-lucide="copy" class="w-3.5 h-3.5 text-cyan-400"></i>
+                  <span>Copy Pack</span>
+                </button>
+
+                <!-- Sheet Modal -->
+                ${v.has_sheet ? `
+                  <button onclick='openSheetModal("${sheetUrl}", "${escapeHtml(v.title)}")' title="Inspect Contact Sheet" class="w-8 h-8 rounded-xl glass-pill hover:bg-white/10 flex items-center justify-center text-slate-300 transition-colors">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                  </button>
+                ` : ''}
+
+                <!-- Direct Download Button -->
+                <a href="${downloadUrl}" download title="Download MP4" class="w-8 h-8 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 flex items-center justify-center transition-colors">
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Modal Video Player
+    function openVideoModal(campId, filename, title, duration, size) {
+      const modal = document.getElementById('video-modal');
+      const videoEl = document.getElementById('modal-video-element');
+      const titleEl = document.getElementById('modal-video-title');
+      const metaEl = document.getElementById('modal-video-meta');
+      const dlBtn = document.getElementById('modal-download-btn');
+      const copyBtn = document.getElementById('modal-copy-btn');
+
+      titleEl.textContent = title;
+      metaEl.textContent = `${duration} • ${size} MB • CFR 30.00 fps • 1080x1920`;
+
+      videoEl.src = `/api/video?campaign=${campId}&file=${filename}`;
+      videoEl.load();
+      videoEl.play().catch(() => {});
+
+      dlBtn.onclick = () => {
+        window.location.href = `/api/download?campaign=${campId}&file=${filename}`;
+      };
+
+      copyBtn.onclick = () => {
+        // find video object
+        const camp = allCampaigns.find(c => c.id === campId);
+        const vid = camp?.videos.find(v => v.filename === filename);
+        if (vid) {
+          copyToClipboard(vid.caption, 'Social caption copied!');
+        }
+      };
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const videoEl = document.getElementById('modal-video-element');
+      videoEl.pause();
+      videoEl.src = '';
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    // Sheet Modal
+    function openSheetModal(sheetUrl, title) {
+      const modal = document.getElementById('sheet-modal');
+      document.getElementById('modal-sheet-image').src = sheetUrl;
+      document.getElementById('modal-sheet-title').textContent = title + ' — Visual Contact Sheet';
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeSheetModal() {
+      const modal = document.getElementById('sheet-modal');
+      document.getElementById('modal-sheet-image').src = '';
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    // 1-Click Copy Drawer
+    function openCopyDrawer(videoData) {
+      currentDrawerData = videoData;
+      const modal = document.getElementById('copy-modal');
+      document.getElementById('drawer-video-title').textContent = videoData.title;
+
+      // Render 3 hooks
+      const hooksContainer = document.getElementById('drawer-hooks-list');
+      hooksContainer.innerHTML = (videoData.hooks || []).map((h, i) => `
+        <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-950 border border-white/5">
+          <span class="text-xs text-slate-200 italic line-clamp-2">"${escapeHtml(h)}"</span>
+          <button onclick='copyToClipboard("${escapeHtml(h)}", "Hook ${i+1} copied!")' class="flex-shrink-0 px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold flex items-center gap-1">
+            <i data-lucide="copy" class="w-3 h-3"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+      `).join('');
+
+      document.getElementById('drawer-caption-text').value = videoData.caption;
+      document.getElementById('drawer-vo-text').textContent = `"${videoData.voiceover}"`;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      lucide.createIcons();
+    }
+
+    function closeCopyModal() {
+      document.getElementById('copy-modal').classList.add('opacity-0', 'pointer-events-none');
+      currentDrawerData = null;
+    }
+
+    function copyDrawerCaption() {
+      if (currentDrawerData) {
+        copyToClipboard(currentDrawerData.caption, 'Full caption copied to clipboard!');
+      }
+    }
+
+    function copyDrawerVO() {
+      if (currentDrawerData) {
+        copyToClipboard(currentDrawerData.voiceover, 'Voiceover script copied to clipboard!');
+      }
+    }
+
+    // Generic Clipboard copy with toast
+    function copyToClipboard(text, message = 'Copied to clipboard!') {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(message);
+      }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast(message);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // Interactive Pipeline Simulation
+    let isPipelineRunning = false;
+    async function runPipelineSimulation() {
+      if (isPipelineRunning) return;
+      isPipelineRunning = true;
+
+      const btn = document.getElementById('run-pipeline-btn');
+      const term = document.getElementById('terminal-stream');
+      const statusText = document.getElementById('log-status-text');
+
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i><span>Processing...</span>`;
+      statusText.textContent = 'Active • Synthesizing Video';
+      lucide.createIcons();
+
+      term.innerHTML = '';
+
+      // Reset all steps
+      for (let i = 1; i <= 7; i++) {
+        const pstep = document.getElementById(`pstep-${i}`);
+        pstep.className = 'p-3.5 rounded-xl bg-slate-900/60 border border-white/5 transition-all duration-300';
+        pstep.querySelector('.status-dot').className = 'w-2 h-2 rounded-full bg-slate-600 status-dot';
+      }
+
+      try {
+        const res = await fetch('/api/pipeline/simulate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ campaign: activeCampaignId, topic: 'Interactive Render Demo' })
+        });
+        const data = await res.json();
+
+        // Step by step visual reveal
+        const steps = data.steps;
+        const logs = data.terminal_logs;
+
+        for (let i = 0; i < steps.length; i++) {
+          const stepNum = i + 1;
+          const pstep = document.getElementById(`pstep-${stepNum}`);
+          
+          // Set to active
+          pstep.className = 'p-3.5 rounded-xl bg-cyan-950/40 border border-cyan-500/40 scale-[1.03] transition-all duration-300';
+          pstep.querySelector('.status-dot').className = 'w-2 h-2 rounded-full bg-cyan-400 live-dot status-dot';
+
+          // Add terminal log
+          if (logs[i]) {
+            const logLine = document.createElement('div');
+            logLine.className = 'text-cyan-300';
+            logLine.textContent = logs[i];
+            term.appendChild(logLine);
+            term.scrollTop = term.scrollHeight;
+          }
+
+          await new Promise(r => setTimeout(r, steps[i].duration_ms || 800));
+
+          // Set to done
+          pstep.className = 'p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 transition-all duration-300';
+          pstep.querySelector('.status-dot').className = 'w-2 h-2 rounded-full bg-emerald-400 status-dot';
+        }
+
+        // Add remaining logs
+        for (let j = steps.length; j < logs.length; j++) {
+          const logLine = document.createElement('div');
+          logLine.className = 'text-emerald-400 font-semibold';
+          logLine.textContent = logs[j];
+          term.appendChild(logLine);
+          term.scrollTop = term.scrollHeight;
+          await new Promise(r => setTimeout(r, 400));
+        }
+
+        statusText.textContent = 'Completed • Ready for Download';
+        showToast('Video pipeline completed successfully!');
+
+      } catch (err) {
+        console.error('Pipeline error:', err);
+      } finally {
+        isPipelineRunning = false;
+        btn.disabled = false;
+        btn.innerHTML = `<i data-lucide="refresh-cw" class="w-4 h-4"></i><span>Run Sequence Again</span>`;
+        lucide.createIcons();
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Run on mount
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

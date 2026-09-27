@@ -1,0 +1,38 @@
+import os
+
+ASS_TEMPLATE = """[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Impact,48,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,5,3,2,60,60,400,1
+Style: Highlight,Impact,52,&H0020E5FF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,5,4,2,60,60,400,1
+Style: EndCardStyle,Impact,56,&H0020E5FF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,6,4,2,60,60,450,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:03.60,Default,,0,0,0,,Think this is just another chill\\Nfishing game on Roblox?
+Dialogue: 0,0:00:03.60,0:00:05.15,Highlight,,0,0,0,,THINK AGAIN!
+Dialogue: 0,0:00:05.15,0:00:09.08,Highlight,,0,0,0,,This is HOW TO FISCH,\\Nwhere every catch fights back!
+Dialogue: 0,0:00:09.08,0:00:12.20,Default,,0,0,0,,Start by casting your iron rod...
+Dialogue: 0,0:00:12.20,0:00:15.42,Default,,0,0,0,,and reel in floppy shrimp & goofy clams!
+Dialogue: 0,0:00:15.42,0:00:19.42,Default,,0,0,0,,Sell your loot to the lighthouse keeper\\Nto upgrade your bait and gear!
+Dialogue: 0,0:00:19.42,0:00:21.80,Default,,0,0,0,,Because out here, you have to survive...
+Dialogue: 0,0:00:21.80,0:00:24.37,Highlight,,0,0,0,,against giant bosses like the SPIDER CRAB!
+Dialogue: 0,0:00:24.37,0:00:27.10,Default,,0,0,0,,Sail to new islands and unlock weapons...
+Dialogue: 0,0:00:27.10,0:00:29.76,Highlight,,0,0,0,,to hunt down legendary sea monsters!
+Dialogue: 0,0:00:29.76,0:00:33.40,EndCardStyle,,0,0,0,,{\\pos(540,1460)}Search "HOW TO FISCH" on Roblox\\Nand play right now!
+"""
+
+def main():
+    os.makedirs("subtitles", exist_ok=True)
+    out_path = "subtitles/captions.ass"
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(ASS_TEMPLATE)
+    print(f"Updated styled ASS subtitles at {out_path}")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,101 @@
+import urllib.request
+import json
+import base64
+import wave
+import os
+import subprocess
+import time
+
+API_KEY = os.environ.get("GEMINI_API_KEY", "")
+
+VOICE_SCRIPT = (
+    "We started with base 100 speed in Steal a Seed, but unlocked the secret to climbing the global leaderboard! "
+    "At first you only have a wooden stick and zero cash, getting wiped out by giant pumpkin bosses! "
+    "So we hit the gym treadmills, stacked lightning multipliers, and blasted past twenty thousand speed! "
+    "We stole the rare glowing block, grew the massive electric cube, and skyrocketed up the Top Power Leaderboard! "
+    "Search Steal a Seed on Roblox and claim your spot on the leaderboard right now!"
+)
+
+def generate_voice():
+    temp_dir = "temp/steal_a_seed"
+    os.makedirs(temp_dir, exist_ok=True)
+    
+    raw_wav = os.path.join(temp_dir, "voiceover_sas_09_raw.wav")
+    fast_wav = os.path.join(temp_dir, "voiceover_sas_09_fast.wav")
+    
+    models = ["gemini-2.5-flash-preview-tts", "gemini-3.8-flash-tts"]
+    
+    print("Generating Puck voiceover for Steal a Seed Video 09 (Zero Speed to Leaderboard)...")
+    payload = {
+        "contents": [
+            {
+                "parts": [
+                    {"text": VOICE_SCRIPT}
+                ]
+            }
+        ],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {
+                "voiceConfig": {
+                    "prebuiltVoiceConfig": {
+                        "voiceName": "Puck"
+                    }
+                }
+            }
+        }
+    }
+    
+    success = False
+    for model_name in models:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={API_KEY}"
+        print(f"Trying model {model_name}...")
+        try:
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                res_data = json.loads(resp.read().decode("utf-8"))
+            part = res_data["candidates"][0]["content"]["parts"][0]
+            audio_b64 = part["inlineData"]["data"]
+            audio_bytes = base64.b64decode(audio_b64)
+            with wave.open(raw_wav, "wb") as wf:
+                wf.setnchannels(1)
+                wf.setsampwidth(2)
+                wf.setframerate(24000)
+                wf.writeframes(audio_bytes)
+            raw_dur = (len(audio_bytes) / 2) / 24000
+            print(f"Saved raw voiceover: {raw_wav} ({raw_dur:.2f}s)")
+            success = True
+            break
+        except Exception as e:
+            print(f"Model {model_name} failed: {e}")
+            time.sleep(2)
+            
+    if not success:
+        raise RuntimeError("Failed to generate voiceover with all available models")
+    
+    # Trim dead air >100ms and speed up to breathless cadence 1.28x
+    cmd = [
+        "ffmpeg", "-y",
+        "-i", raw_wav,
+        "-af", "silenceremove=stop_periods=-1:stop_duration=0.10:stop_threshold=-35dB,atempo=1.28",
+        fast_wav
+    ]
+    subprocess.run(cmd, check=True)
+    
+    # Get fast duration
+    probe_cmd = [
+        "ffprobe", "-v", "error", "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1", fast_wav
+    ]
+    res = subprocess.run(probe_cmd, capture_output=True, text=True, check=True)
+    fast_dur = float(res.stdout.strip())
+    print(f"Processed fast voiceover: {fast_wav} ({fast_dur:.2f}s)")
+    return fast_dur
+
+if __name__ == "__main__":
+    generate_voice()

@@ -1,0 +1,344 @@
+[
+  {
+    "name": "01_Clip 1.mp4",
+    "duration": "00:00:06.28",
+    "seconds": 6.28,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 4.86
+  },
+  {
+    "name": "02_Clip 2.mp4",
+    "duration": "00:00:05.53",
+    "seconds": 5.53,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 11.28
+  },
+  {
+    "name": "03_Clip 3.mp4",
+    "duration": "00:00:11.17",
+    "seconds": 11.17,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 5.81
+  },
+  {
+    "name": "04_Clip 4.mp4",
+    "duration": "00:00:06.10",
+    "seconds": 6.1,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 33.29
+  },
+  {
+    "name": "05_Clip 5.mp4",
+    "duration": "00:00:07.13",
+    "seconds": 7.13,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 38.47
+  },
+  {
+    "name": "06_Clip 6.mp4",
+    "duration": "00:00:08.22",
+    "seconds": 8.22,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 33.18
+  },
+  {
+    "name": "07_Clip 7.mp4",
+    "duration": "00:00:03.68",
+    "seconds": 3.68,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 20.66
+  },
+  {
+    "name": "08_Clip 8.mp4",
+    "duration": "00:00:05.65",
+    "seconds": 5.65,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 31.86
+  },
+  {
+    "name": "09_Clip 9.mp4",
+    "duration": "00:00:04.92",
+    "seconds": 4.92,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 27.26
+  },
+  {
+    "name": "10_Clip 10.mp4",
+    "duration": "00:00:15.28",
+    "seconds": 15.28,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 78.25
+  },
+  {
+    "name": "11_Clip 11.mp4",
+    "duration": "00:00:02.60",
+    "seconds": 2.6,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 13.37
+  },
+  {
+    "name": "12_Clip 12.mp4",
+    "duration": "00:00:02.60",
+    "seconds": 2.6,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 11.85
+  },
+  {
+    "name": "13_Clip 13.mp4",
+    "duration": "00:00:07.00",
+    "seconds": 7.0,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 42.36
+  },
+  {
+    "name": "14_Clip 14.mp4",
+    "duration": "00:00:11.02",
+    "seconds": 11.02,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 60.51
+  },
+  {
+    "name": "15_Clip 15.mp4",
+    "duration": "00:00:07.70",
+    "seconds": 7.7,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 39.78
+  },
+  {
+    "name": "16_Clip 16.mp4",
+    "duration": "00:00:04.22",
+    "seconds": 4.22,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 24.69
+  },
+  {
+    "name": "17_Clip 17.mp4",
+    "duration": "00:00:09.42",
+    "seconds": 9.42,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 48.43
+  },
+  {
+    "name": "18_Clip 18.mp4",
+    "duration": "00:00:08.57",
+    "seconds": 8.57,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 44.84
+  },
+  {
+    "name": "19_Clip 19.mp4",
+    "duration": "00:00:10.65",
+    "seconds": 10.65,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 60.01
+  },
+  {
+    "name": "20_Clip 20.mp4",
+    "duration": "00:00:07.20",
+    "seconds": 7.2,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 39.31
+  },
+  {
+    "name": "21_Clip 21.mp4",
+    "duration": "00:00:03.68",
+    "seconds": 3.68,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 20.46
+  },
+  {
+    "name": "22_Clip 22.mp4",
+    "duration": "00:00:05.17",
+    "seconds": 5.17,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 34.78
+  },
+  {
+    "name": "23_Clip 23.mp4",
+    "duration": "00:00:03.87",
+    "seconds": 3.87,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 22.57
+  },
+  {
+    "name": "24_Clip 24.mp4",
+    "duration": "00:00:07.70",
+    "seconds": 7.7,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 45.12
+  },
+  {
+    "name": "25_Clip 25.mp4",
+    "duration": "00:00:06.12",
+    "seconds": 6.12,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 43.11
+  },
+  {
+    "name": "26_Clip 26.mp4",
+    "duration": "00:00:09.88",
+    "seconds": 9.88,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 37.89
+  },
+  {
+    "name": "27_Clip 27.mp4",
+    "duration": "00:00:05.70",
+    "seconds": 5.7,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 37.47
+  },
+  {
+    "name": "28_Clip 28.mp4",
+    "duration": "00:00:02.23",
+    "seconds": 2.23,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 15.09
+  },
+  {
+    "name": "29_Clip 29.mp4",
+    "duration": "00:00:02.93",
+    "seconds": 2.93,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 16.29
+  },
+  {
+    "name": "30_Clip 30.mp4",
+    "duration": "00:00:05.53",
+    "seconds": 5.53,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 32.82
+  },
+  {
+    "name": "31_Clip 31.mp4",
+    "duration": "00:00:08.85",
+    "seconds": 8.85,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 59.81
+  },
+  {
+    "name": "32_Clip 32.mp4",
+    "duration": "00:00:06.02",
+    "seconds": 6.02,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 41.45
+  },
+  {
+    "name": "33_Clip 33.mp4",
+    "duration": "00:00:09.55",
+    "seconds": 9.55,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 68.41
+  },
+  {
+    "name": "34_Clip 34.mp4",
+    "duration": "00:00:05.00",
+    "seconds": 5.0,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 22.92
+  },
+  {
+    "name": "35_Clip 35.mp4",
+    "duration": "00:00:05.42",
+    "seconds": 5.42,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 34.04
+  },
+  {
+    "name": "36_Clip 36.mp4",
+    "duration": "00:00:06.83",
+    "seconds": 6.83,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 46.94
+  },
+  {
+    "name": "37_Clip 37.mp4",
+    "duration": "00:00:06.33",
+    "seconds": 6.33,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 45.45
+  },
+  {
+    "name": "38_Clip 38.mp4",
+    "duration": "00:00:05.30",
+    "seconds": 5.3,
+    "resolution": "2304x1440",
+    "has_audio": true,
+    "fps": "60",
+    "size_mb": 36.62
+  }
+]

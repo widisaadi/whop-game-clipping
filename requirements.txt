@@ -1,0 +1,13 @@
+# ==============================================================================
+# BloxClips Game Clipping Automation - Python Dependencies
+# ==============================================================================
+
+# Core Dependencies
+Pillow>=10.0.0
+python-dotenv>=1.0.0
+
+# Optional: Alternative TTS & Local Whisper Speech Alignment
+# Uncomment jika Anda ingin menggunakan Edge TTS atau Whisper lokal
+# edge-tts>=6.1.9
+# faster-whisper>=1.0.0
+# openai-whisper>=20231117
