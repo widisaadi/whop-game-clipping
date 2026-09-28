@@ -121,8 +121,8 @@ Struktur skrip video pendek BloxClips wajib mengadopsi formula 5-beat teruji yan
 - Foto branding resmi game card / crowned icon tepat di atas teks dengan jarak 24px, dan judul game resmi di atas card dengan jarak 24px.
 
 **Arsitektur Audio & Balance Mix:**
-- **Voiceover:** Model natural (default Puck atau native campaign), gain dinaikkan **+4 dB boost** (`volume=1.35,volume=4dB`) agar vokal tebal, punchy, dan dominan.
-- **BGM:** Beat gaming berenergi tinggi (seperti `assets/bgm3.mp3`), gain diturunkan **-5 dB relatif terhadap vokal** (`volume=0.22,volume=-5dB` ≈ `0.124`), dengan smooth fade-out 1.9s di akhir video.
+- **Voiceover:** Model natural (default Kore atau native campaign), gain dinaikkan **+4 dB boost** (`volume=1.35,volume=4dB`) agar vokal tebal, punchy, dan dominan.
+- **BGM:** Background musik (default `assets/bgm.mp3` atau BGM campaign pilihan), gain diturunkan **-5 dB relatif terhadap vokal** (`volume=0.22,volume=-5dB` ≈ `0.124`), dengan smooth fade-out 1.9s di akhir video.
 - **SFX Layer:** Micro-pops, whoosh transisi, dan impact bass terpisah di channel SFX (`volume=0.90`).
 - **Normalisasi:** Wajib 2-Pass EBU R128 ke **`-14.0 LUFS` (`-1.5 dBTP`)**, color space CFR 30 fps BT.709.
 

@@ -18,7 +18,7 @@
     5. *Beat 5 — Peak Superpower & Clean Living Endcard CTA (15.0s–End):* Tease kekuatan puncak ("literally fly across the map", "catch mythical leviathan") diikuti pengenalan nama game & CTA bersih (`LINK IN BIO` atau `PLAY ON ROBLOX`).
   - **Cadence & Pacing Cepat ("Gaada Napas"):** Delivery voiceover wajib cepat, berenergi tinggi, dan padat (~3.8–4.1 kata/detik). Pangkas semua dead air/jeda hening di atas 100ms (`silenceremove=stop_periods=-1:stop_duration=0.10:stop_threshold=-35dB,atempo=1.30..1.35`) agar penonton tidak memiliki celah untuk swipe.
   - **Arsitektur Audio & Balance Mix:**
-    - *Voiceover:* Menggunakan model suara natural (default Puck atau voice native campaign, tanpa prompt tags emosi buatan), gain dinaikkan **+4 dB boost** (`volume=1.35,volume=4dB`) agar vokal tebal, tegas, dan selalu berada di depan musik.
+    - *Voiceover:* Menggunakan model suara natural (default Kore atau voice native campaign, tanpa prompt tags emosi buatan), gain dinaikkan **+4 dB boost** (`volume=1.35,volume=4dB`) agar vokal tebal, tegas, dan selalu berada di depan musik.
     - *BGM:* Track background musik (default `assets/bgm.mp3` atau BGM campaign pilihan), gain diturunkan **-5 dB relatif terhadap vokal** (`volume=0.22,volume=-5dB` ≈ `0.124`), dengan smooth fade-out 1.9s di akhir video.
     - *SFX Layer:* Micro-pops, whoosh transisi, dan impact bass terpisah di channel SFX (`volume=0.90`).
     - *Normalisasi:* Wajib 2-Pass EBU R128 ke **`-14.0 LUFS` (`-1.5 dBTP`)**.

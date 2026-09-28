@@ -7,8 +7,11 @@ import subprocess
 import time
 
 API_KEYS = [k.strip() for k in os.environ.get("GEMINI_API_KEYS", os.environ.get("GEMINI_API_KEY", "")).split(",") if k.strip()]
+DEFAULT_VOICE = os.environ.get("GEMINI_VOICE", "Kore")
 
-def request_tts_with_rotation(text, voice_name="Puck", output_raw_wav="temp/raw_tts.wav"):
+def request_tts_with_rotation(text, voice_name=None, output_raw_wav="temp/raw_tts.wav"):
+    if voice_name is None:
+        voice_name = DEFAULT_VOICE
     os.makedirs(os.path.dirname(output_raw_wav), exist_ok=True)
     
     payload = {

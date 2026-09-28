@@ -25,7 +25,9 @@ def generate_one_voice(v_conf):
         print(f"[{vid_id}] Voiceover already exists ({dur:.2f}s). Skipping.")
         return dur
         
-    print(f"\n[{vid_id}] Generating Puck Voiceover...")
+    DEFAULT_VOICE = os.environ.get("GEMINI_VOICE", "Kore")
+    voice_name = v_conf.get("voice", DEFAULT_VOICE)
+    print(f"\n[{vid_id}] Generating {voice_name} Voiceover...")
     models = ["gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts"]
     payload = {
         "contents": [{"parts": [{"text": script_text}]}],
@@ -33,7 +35,7 @@ def generate_one_voice(v_conf):
             "responseModalities": ["AUDIO"],
             "speechConfig": {
                 "voiceConfig": {
-                    "prebuiltVoiceConfig": {"voiceName": "Puck"}
+                    "prebuiltVoiceConfig": {"voiceName": voice_name}
                 }
             }
         }

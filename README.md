@@ -106,8 +106,8 @@ Generate voiceovers using Google Gemini TTS.
 
 The pipeline supports:
 
-- Gemini voices
-- Multiple API keys
+- Gemini prebuilt voices (default: `Kore`, or easily switch to `Fenrir`, `Charon`, etc.)
+- Multiple API keys & automatic rotation
 - Batch generation
 - Silence trimming
 - Voice pacing
@@ -266,6 +266,7 @@ Then add your API key:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
+GEMINI_VOICE=Kore  # Optional: Kore (default), Fenrir, Charon, etc.
 ```
 
 Get your free Gemini API key directly here:  
